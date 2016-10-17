@@ -44,9 +44,9 @@ Veggiecron will not be available via pip until we reach the version 1.0 `milesto
 Usage
 =====
 
--------------
+^^^^^^^^^^^^^
 Configuration
--------------
+^^^^^^^^^^^^^
 
 High-level configurations can be found in the ``config.yaml`` file. Descriptions of each config are in the following table:
 
