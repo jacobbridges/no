@@ -12,11 +12,10 @@ Veggiecron Server: a healthier alternative to cron
         :width: 100%
         :align: center
 
-
+========
+Contents
+========
 .. contents::
-   ========
-   Contents
-   ========
 
 
 ============
