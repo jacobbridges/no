@@ -136,4 +136,14 @@ In-Depth Docs
 
 *This section is for more detailed documentation, while the previous sections for skimming readers.*
 
+---------
+Job Types
+---------
 
+The following job types are available:
+
++------+-------------------------------+
+| Type | Description                   |
++======+===============================+
+| http | Job that makes HTTP requests. |
++------+-------------------------------+
