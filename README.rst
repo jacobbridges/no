@@ -14,10 +14,6 @@ Veggiecron Server: a healthier alternative to cron
 
 .. contents::
 
-.. raw:: pdf
-
-   PageBreak oneColumn
-
 
 ============
 Installation
@@ -38,15 +34,88 @@ Veggiecron will not be available via pip until we reach the version 1.0 `milesto
    $ ./venv/bin/activate
 
    # Install the dependencies
-   pip install -r requirements.txt
+   $ pip install -r requirements.txt
 
 =====
 Usage
 =====
 
-^^^^^^^^^^^^^
+----------------
+Start the Server
+----------------
+
+Simple and clean:
+
+.. code-block:: bash
+
+   $ python3 start.py
+
+The server will be started on 0.0.0.0:8118.
+
+---------------
+Register a User
+---------------
+
+.. code-block:: bash
+
+   $ http --form POST localhost:8118/register username=test password=test
+   {
+       "data": {
+           "date_created": 1476675574.624803,
+           "date_updated": 1476675574.624803,
+           "username": "test"
+       },
+       "description": "You are registered as \"test\"! Proceed to login.",
+       "id": "success"
+   }
+
+-------------------------
+Login (Get an Auth Token)
+-------------------------
+
+Auth tokens are required to perform any actions via REST on Veggiecron. These tokens can be retrieved from the ``/login`` endpoint, and are used in the request header under ``X-Auth-Token``:
+
+.. code-block:: bash
+
+   $ http --form POST localhost:8118/login username=test password=test
+   {
+       "data": {
+           "token": "MmIxNTYwNOM2ZmZlNjQ4YzXkNWMyM2E1ZDEzMDZlMWU6dGVzdA=="
+       },
+       "description": "You have successfully generated an auth token! Check the data key.",
+       "id": "success"
+   }
+
+------------
+Create a Job
+------------
+
+Simple example for creating a job:
+
+.. code-block:: bash
+
+   $ http --form POST localhost:8118/job X-Auth-Token:<token> name=<name> type=<type> data=<data> schedule=<schedule>
+   {
+       "data": {
+           "data": "<data>",
+           "date_created": <unix-timestamp>,
+           "date_updated": <unix-timestamp>,
+           "name": "<name>",
+           "schedule": "<schedule>",
+           "type": "<type>"
+       },
+       "description": "Successfully created http job: \"<name>\"",
+       "id": "success"
+   }
+
+The above code example will raise more questions than it answers. Here is a list of relevant links you might want to check out:
+
+* `Job Types`_
+* `Schedule String Format`_
+
+-------------
 Configuration
-^^^^^^^^^^^^^
+-------------
 
 High-level configurations can be found in the ``config.yaml`` file. Descriptions of each config are in the following table:
 
@@ -60,3 +129,11 @@ host      Host to run the server on.
 port      Port to run the server on.
 db_file   Name of the SQLite3 database file.
 ========  =====================================================================
+
+=============
+In-Depth Docs
+=============
+
+*This section is for more detailed documentation, while the previous sections for skimming readers.*
+
+
