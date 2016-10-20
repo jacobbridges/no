@@ -1,5 +1,3 @@
-.. include:: README.md
-
 ##################################################
 Veggiecron Server: a healthier alternative to cron
 ##################################################
