@@ -19,6 +19,8 @@ Veggiecron Server: a healthier alternative to cron
 Installation
 ============
 
+.. include:: test.rst
+
 Veggiecron will not be available via pip until we reach the version 1.0 `milestone <https://github.com/jacobbridges/veggiecron-server/milestone/1>`_ For those brave enough to run the "pre-v1" product, follow these instructions:
 
 .. code-block:: bash
